@@ -44,18 +44,24 @@ Resuelto / parcial / no resuelto. Si es parcial, qué falta:
 ## B-03 · Se acepta un tipo de criatura inválido
 ### Síntoma
 Acción/datos, esperado y observado ANTES:
+El reporte indica que la API permite actualizar una criatura con el tipo inválido fantasma.
 
 ### Causa
 Explicación causal y archivo/capa, no solo su nombre:
+En la capa de servicios, criaturas.service.ts, la actualización de Mongoose no activa validaciones del esquema. El modelo sí restringe tipo a los valores permitidos.
 
 ### Cambio
 Qué modifiqué, por qué resuelve la causa y commit de corrección:
+Agregar runValidators: true a las opciones de actualización. De esta manera reconoce los datos para poder validarlos.
 
 ### Prueba
 Pasos/comando, datos, status/resultado esperado y observado DESPUÉS; archivo de evidencia:
+Sin prueba posterior confirmada; falta verificar tipo válido, rechazo de fantasma con 400 y que un GET conserve el tipo válido anterior.
 
 ### Estado
 Resuelto / parcial / no resuelto. Si es parcial, qué falta:
+Parcial. Falta una cinfirmación dentro de un cliente HTTP.
+
 
 ## B-04 · El filtro de avistamientos no actualiza
 ### Síntoma
