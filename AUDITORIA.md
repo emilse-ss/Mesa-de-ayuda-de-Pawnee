@@ -6,18 +6,24 @@ Rama: ___
 ## B-01 · No se guarda la edición del avistamiento
 ### Síntoma
 Acción/datos, esperado y observado ANTES:
+A la hora de editar un avistamiento, el backend rechazaba el cuerpo ("Campos no permitidos en el cuerpo"). La consola mostrabba un PUT inválido y también había un ERR_INTERNET_DISCONNECTED.
 
 ### Causa
 Explicación causal y archivo/capa, no solo su nombre:
+El formulario estaba enviando criaturaId cuando era necesario el campo criatura para poder porcesar el cuerpo de los datos.
 
 ### Cambio
 Qué modifiqué, por qué resuelve la causa y commit de corrección:
+Establecer criatura dentro de los parámetros de crear y enviar, de esta forma son validados correctamente.
 
 ### Prueba
 Pasos/comando, datos, status/resultado esperado y observado DESPUÉS; archivo de evidencia:
+    datos[id ? 'criaturaId' : 'criatura'] = form.criatura; pasa a
+    datos.criatura = form.criatura;
 
 ### Estado
 Resuelto / parcial / no resuelto. Si es parcial, qué falta:
+Resuelto
 
 ## B-02 · El detalle no identifica a la criatura
 ### Síntoma
