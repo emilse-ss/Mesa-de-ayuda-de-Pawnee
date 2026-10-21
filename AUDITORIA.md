@@ -28,18 +28,23 @@ Resuelto
 ## B-02 · El detalle no identifica a la criatura
 ### Síntoma
 Acción/datos, esperado y observado ANTES:
+Al abrir el detalle de un avistamiento, el campo de criatura muestra ID:... en vez del nombre.
 
 ### Causa
 Explicación causal y archivo/capa, no solo su nombre:
+En la capa de servicios, obtener() en backend/src/services/avistamientos.service.ts no poblaba la referencia criatura, a diferencia de listar(). El frontend recibía el ID y lo mostraba como tal.
 
 ### Cambio
 Qué modifiqué, por qué resuelve la causa y commit de corrección:
+Propuesto agregar .populate('criatura') a la consulta de obtener() para devolver la criatura relacionada.
 
 ### Prueba
 Pasos/comando, datos, status/resultado esperado y observado DESPUÉS; archivo de evidencia:
+Los detalles son validos dentro de la lista.
 
 ### Estado
 Resuelto / parcial / no resuelto. Si es parcial, qué falta:
+Resuelto
 
 ## B-03 · Se acepta un tipo de criatura inválido
 ### Síntoma
